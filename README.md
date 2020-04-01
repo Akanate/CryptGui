@@ -1,2 +1,2 @@
 # CryptGui
-An enctyption gui made in python.
+An encryption gui made in python.
