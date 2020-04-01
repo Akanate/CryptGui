@@ -1,19 +1,15 @@
+"""Imports"""
+import os
+import sys
+import cryptography.fernet as f
 from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QLabel
-from PyQt5.QtWidgets import QWidget
-from PyQt5.QtWidgets import QPushButton
-from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtWidgets import QFormLayout
 from PyQt5.QtWidgets import QLineEdit
-from PyQt5.QtWidgets import QDialogButtonBox
-import os
-import time
-import sys
-import cryptography.fernet as f
 
+"""Start of code"""
 class CryptGui(QDialog):
     def __init__(self,parent=None):
         """Initializes program"""
