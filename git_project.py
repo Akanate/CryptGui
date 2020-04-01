@@ -8,13 +8,15 @@ from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtWidgets import QFormLayout
 from PyQt5.QtWidgets import QLineEdit
-
+from PyQt5.QtWidgets import QLabel
+from PyQt5 import QtGui
 """Start of code"""
 class CryptGui(QDialog):
     def __init__(self,parent=None):
         """Initializes program"""
         super().__init__(parent)
         self.setWindowTitle('Encryptor')
+        self.setWindowIcon(QtGui.QIcon('index.png'))
         self.msg = QLabel('')
         Dialog_layout = QVBoxLayout()
         Text_layout = QFormLayout()
@@ -109,10 +111,11 @@ class CryptGui(QDialog):
             g = open(self.textbox3.text(),'wb')
             g.write(key)
             g.close()
+            path = self.textbox3.text()
             self.textbox1.setText('')
             self.textbox2.setText('')
             self.textbox3.setText('')
-            self.msg.setText(f'Saved key to {self.textbox3.text()}')
+            self.msg.setText(f'Saved key to {path}')
         except Exception as e:
             print(f'An error has occured {e}')
             self.msg.setText(f'An error has occured {e}')
@@ -124,4 +127,3 @@ if __name__ == '__main__':
     Encrypt = CryptGui()
     Encrypt.show()
     sys.exit(app.exec_())
-
