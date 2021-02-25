@@ -24,7 +24,7 @@ class CryptGui(QDialog):
         self.textbox2 = QLineEdit(self)
         self.textbox3 = QLineEdit(self)
         Text_layout.addRow('Enter Path:',self.textbox1)
-        Text_layout.addRow('Enter key:',self.textbox2)
+        Text_layout.addRow('Enter key path:',self.textbox2)
         Text_layout.addRow('Path for key(Only use when generating key)',self.textbox3)
         Dialog_layout.addLayout(Text_layout)
         layout = QVBoxLayout()
@@ -49,12 +49,14 @@ class CryptGui(QDialog):
             self.msg.setText('Specify a key to use!!!')
             return
         path = self.textbox1.text()
-        key = self.textbox2.text()
-        if os.path.exists(path):
+        key_path = self.textbox2.text()
+        if os.path.exists(key_path) and os.path.exists(path):
             try:
                 _path = open(path,'r')
                 contents = _path.read()
-                k = f.Fernet(key)
+                key_path = open(key_path,'r')
+                key_contents = key_path.read()
+                k = f.Fernet(key_contents)
                 encoded_contents = contents.encode()
                 crypt = k.encrypt(encoded_contents)
                 _clear = open(path,'wb')
