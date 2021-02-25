@@ -24,7 +24,7 @@ class CryptGui(QDialog):
         Text_layout = QFormLayout()
         layout = QVBoxLayout()
         self.textbox1 = QLineEdit(self)
-        self.path_button = QPushButton('Select Path to encrypt')
+        self.path_button = QPushButton('Select Path to encrypt/decrypt')
         self.textbox2 = QLineEdit(self)
         self.key_button = QPushButton('Select Key Path')
         layout.addWidget(self.key_button)
@@ -71,11 +71,9 @@ class CryptGui(QDialog):
                 _clear.close()
                 self.msg.setText(f'Encrypted file {path}')
                 self.textbox1.setText('')
-                self.textbox2.setText('')
             except Exception as e:
                 self.msg.setText(f'An error has occured {e}')
                 self.textbox1.setText('')
-                self.textbox2.setText('')
                 return
         else:
             self.msg.setText('That path does not exist')
@@ -106,7 +104,6 @@ class CryptGui(QDialog):
             except Exception as e:
                 self.msg.setText(f'An error has occured {e}')
                 self.textbox1.setText('')
-                self.textbox2.setText('')
         else:
             self.msg.setText('This path does not exist.')
 
@@ -138,3 +135,4 @@ if __name__ == '__main__':
     Encrypt = CryptGui()
     Encrypt.show()
     sys.exit(app.exec_())
+
