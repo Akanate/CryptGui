@@ -61,7 +61,7 @@ class CryptGui(QDialog):
             try:
                 _path = open(path,'r')
                 contents = _path.read()
-                key_path = open(key_path,'r')
+                key_path = open(key_path,'rb')
                 key_contents = key_path.read()
                 k = f.Fernet(key_contents)
                 encoded_contents = contents.encode()
@@ -88,10 +88,13 @@ class CryptGui(QDialog):
         path = self.textbox1.text()
         if os.path.exists(path):
             try: 
+                _keypath = open(f'{key}','rb')
+                key = _keypath.read()
                 k2 = f.Fernet(key)
-                _path = open(path,"rb")
+                _path = open(path,"r")
                 contents = _path.read()
                 _path.close()
+                contents = contents.encode()
                 decrypt = k2.decrypt(contents)
                 decoded = decrypt.decode()
                 overwrite = open(path,'w+')
@@ -100,7 +103,6 @@ class CryptGui(QDialog):
                 self.msg.setText(f'Decrypted {path}')
                 self.textbox1.setText('')
                 self.textbox2.setText('')
-                self.textbox3.setText('')
             except Exception as e:
                 self.msg.setText(f'An error has occured {e}')
                 self.textbox1.setText('')
