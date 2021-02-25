@@ -11,3 +11,5 @@ This program is used to encrypt files, use it at your own risk. Any damages done
 ##### Version 1.0.1
 - Generation of key is more automatic now you can click a button and it will generate and select the key for you.
 - You now have the option to select a path via a button which takes you to a nice file explorer gui where you can select any text file.
+##### Version 1.0.2
+- Removed the other gen button I left on accident.
