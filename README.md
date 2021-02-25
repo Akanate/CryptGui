@@ -4,7 +4,10 @@ This program is used to encrypt files, use it at your own risk. Any damages done
 ## Requirements
 - Python3
 ## How to use 
-Make sure to install requirements.txt by doing `pip install -r requirements.txt` this will give you the required modules you need for this program.
+- Make sure to install requirements.txt by doing `pip install -r requirements.txt` this will give you the required modules you need for this program.
 ## Update Log
 ##### Version 1.00
-Updated the program so now it gets the contents of the file you put in for the key instead of you having to copy and paste the key out of the file.
+- Updated the program so now it gets the contents of the file you put in for the key instead of you having to copy and paste the key out of the file.
+##### Version 1.0.1
+- Generation of key is more automatic now you can click a button and it will generate and select the key for you.
+- You now have the option to select a path via a button which takes you to a nice file explorer gui where you can select any text file.
