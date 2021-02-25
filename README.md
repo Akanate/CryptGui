@@ -15,3 +15,5 @@ This program is used to encrypt files, use it at your own risk. Any damages done
 - Removed the other gen button I left on accident.
 ##### Version 1.0.3
 - Made it so then the encryption key text box no longer gets reset when you encrypt or decrypt a file.
+##### Version 1.0.4
+- You can now select multiple files to encrypt and decrypt.
