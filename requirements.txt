@@ -1,0 +1,3 @@
+cryptography
+fernet
+pyqt5
