@@ -13,3 +13,5 @@ This program is used to encrypt files, use it at your own risk. Any damages done
 - You now have the option to select a path via a button which takes you to a nice file explorer gui where you can select any text file.
 ##### Version 1.0.2
 - Removed the other gen button I left on accident.
+##### Version 1.0.3
+- Made it so then the encryption key text box no longer gets reset when you encrypt or decrypt a file.
