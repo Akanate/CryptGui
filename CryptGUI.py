@@ -23,38 +23,42 @@ class CryptGui(QDialog):
         self.msg = QLabel('')
         self.resize(500,200)
         self.file_array = []
-        Dialog_layout = QVBoxLayout()
-        Text_layout = QFormLayout()
-        layout = QVBoxLayout()
+        self.Dialog_layout = QVBoxLayout()
+        self.Text_layout = QFormLayout()
+        self.layout = QVBoxLayout()
         self.textbox1 = QPlainTextEdit(self)
         self.textbox1.setReadOnly(True)
         self.textbox1.resize(20,20)
         self.path_button = QPushButton('Select Path to encrypt/decrypt')
         self.textbox2 = QLineEdit(self)
         self.key_button = QPushButton('Select Key Path')
-        layout.addWidget(self.key_button)
-        Text_layout.addRow('Path:',self.textbox1)
-        Text_layout.addWidget(self.path_button)
+        self.init_widgets()
+
+    def init_widgets(self):
+        self.layout.addWidget(self.key_button)
+        self.Text_layout.addRow('Path:',self.textbox1)
+        self.Text_layout.addWidget(self.path_button)
         self.clear_button = QPushButton('Clear Paths')
         self.clear_button.clicked.connect(self.clear)
-        Text_layout.addWidget(self.clear_button)
+        self.Text_layout.addWidget(self.clear_button)
         self.path_button.clicked.connect(self.select_path)
-        Text_layout.addRow('Key Path:',self.textbox2)
-        Text_layout.addWidget(self.key_button)
+        self.Text_layout.addRow('Key Path:',self.textbox2)
+        self.Text_layout.addWidget(self.key_button)
         self.key_button.clicked.connect(self.select_key_path)
-        Dialog_layout.addLayout(Text_layout)
+        self.Dialog_layout.addLayout(self.Text_layout)
         self.gen_k = QPushButton("Automatically Select And Generate Key")
         button = QPushButton('Encrypt')
         button2 = QPushButton('Decrypt')
         self.gen_k.clicked.connect(self.generate_key)
-        layout.addWidget(self.gen_k)
+        self.layout.addWidget(self.gen_k)
         button.clicked.connect(self.encrypt)
-        layout.addWidget(button)
+        self.layout.addWidget(button)
         button2.clicked.connect(self.decrypt)
-        layout.addWidget(button2)
-        layout.addWidget(self.msg)
-        Dialog_layout.addLayout(layout)
-        self.setLayout(Dialog_layout)
+        self.layout.addWidget(button2)
+        self.layout.addWidget(self.msg)
+        self.Dialog_layout.addLayout(self.layout)
+        self.setLayout(self.Dialog_layout)
+
 
     def encrypt(self):
         if self.file_array == []:
@@ -140,9 +144,13 @@ class CryptGui(QDialog):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         filename,_ = QFileDialog.getOpenFileName(None, "Open a File", "","Text Files (*.txt)",options=options)
+        if filename == '':
+            return
         self.file_array.append(str(filename))
-        x = [i+'\n' for i in self.file_array]
-        self.textbox1.setPlainText(''.join(set(x)))
+        x = [i for i in self.file_array]
+        setted_x = set(x)
+        joined_x = '\n'.join(setted_x)
+        self.textbox1.setPlainText(joined_x)
 
     def select_key_path(self):
         options = QFileDialog.Options()
