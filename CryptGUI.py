@@ -23,6 +23,7 @@ class CryptGui(QDialog):
         self.msg = QLabel('')
         self.resize(500,200)
         self.file_array = []
+        self.array_count = 0
         self.Dialog_layout = QVBoxLayout()
         self.Text_layout = QFormLayout()
         self.layout = QVBoxLayout()
@@ -98,7 +99,7 @@ class CryptGui(QDialog):
                 self.textbox1.setPlainText('')
                 self.file_array = []
                 return
-        self.msg.setText(f'Encrypted {len(self.file_array)} files')
+        self.msg.setText(f'Encrypted {self.array_count} files')
         self.file_array = []
         self.textbox1.setPlainText('')
 
@@ -136,7 +137,7 @@ class CryptGui(QDialog):
             else:
                 self.msg.setText('This path does not exist.')
                 return
-        self.msg.setText(f'Decrypted {len(self.file_array)} files')
+        self.msg.setText(f'Decrypted {self.array_count} files')
         self.textbox1.setPlainText('')
         self.file_array = []
 
@@ -149,6 +150,7 @@ class CryptGui(QDialog):
         self.file_array.append(str(filename))
         x = [i for i in self.file_array]
         setted_x = set(x)
+        self.array_count = len(setted_x)
         joined_x = '\n'.join(setted_x)
         self.textbox1.setPlainText(joined_x)
 
