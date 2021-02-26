@@ -17,3 +17,5 @@ This program is used to encrypt files, use it at your own risk. Any damages done
 - Made it so then the encryption key text box no longer gets reset when you encrypt or decrypt a file.
 ##### Version 1.0.4
 - You can now select multiple files to encrypt and decrypt.
+##### Version 1.0.5
+- Bug fix where when you cancel out of selecting a file it would put a newline in, instead this would cause an error where it says that "the path does not exist". Ive also done some changes to the code to make it a bit easier to read.
